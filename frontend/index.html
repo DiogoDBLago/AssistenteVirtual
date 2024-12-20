@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assistente VIVI</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="navbar">
+        <img src="images/logo.png" alt="Logo" class="logo">
+        <span class="title">Assistente VIVI</span>
+        <input type="text" placeholder="Pesquisar..." class="search-bar">
+        <button class="nav-button">Início</button>
+        <button class="nav-button">Configurações</button>
+    </div>
+    
+    <div class="main-content">
+        <p id="mensagem">Aperte para falar com a assistente</p>
+        <button id="botao-ativar" class="botao-play"></button>
+    </div>
+    
+    <div class="footer">VIVI foi feita pelo Diogo</div>
+
+    <script>
+        let ouvindo = false; // Variável para controlar o estado da assistente
+
+        const botao = document.getElementById('botao-ativar');
+        const mensagem = document.getElementById('mensagem');
+
+        botao.addEventListener('click', () => {
+            if (!ouvindo) {
+                // Iniciar assistente
+                mensagem.textContent = 'Prontinho! Pode falar';
+                botao.classList.add('botao-ouvindo'); // Adiciona estilo para indicar estado ativo
+                ativarAssistente();
+            } else {
+                // Parar assistente
+                mensagem.textContent = 'Aperte para falar com a assistente';
+                botao.classList.remove('botao-ouvindo'); // Remove o estilo ativo
+                pararAssistente();
+            }
+            ouvindo = !ouvindo; // Alterna o estado
+        });
+
+        function ativarAssistente() {
+            fetch('http://localhost:5000/assistente/ativar', { method: 'POST' })
+                .then(response => response.json())
+                .then(data => console.log(data.message))
+                .catch(error => console.error('Erro:', error));
+        }
+
+        function pararAssistente() {
+            fetch('http://localhost:5000/assistente/parar', { method: 'POST' })
+                .then(response => response.json())
+                .then(data => console.log(data.message))
+                .catch(error => console.error('Erro:', error));
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+/* Estilos gerais */
+body {
+    background-color: #2f3641;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Barra de navegação */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #1e1e40;
+    color: white;
+    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+.logo {
+    width: 80px;
+    margin-right: 60px;
+}
+
+.title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-right: auto;
+}
+
+.search-bar {
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    width: 200px;
+    margin-right: 10px;
+}
+
+.nav-button {
+    background-color: #333;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    margin-left: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.nav-button:hover {
+    background-color: #555;
+}
+
+/* Conteúdo principal */
+.main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: 100px;
+    padding: 20px;
+    width: 100%;
+    max-width: 800px;
+}
+
+.main-content p {
+    font-size: 18px;
+    color: #fff;
+}
+
+/* Estilo padrão para o botão */
+#botao-ativar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, #1a1a6d, #3c3c99);
+    color: white;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.botao-play::before {
+    content: "▶";
+}
+
+/* Estilo para o estado de gravação com três pontos balançando */
+.botao-gravando::before {
+    content: "● ● ●";
+    font-size: 1.5em;
+    animation: bounce 1s infinite alternate;
+}
+
+/* Animação para os pontos */
+@keyframes bounce {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+    100% { transform: translateY(0); }
+}
+
+/* Rodapé */
+.footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+}
